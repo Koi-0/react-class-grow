@@ -15,18 +15,23 @@ const StBox = styled.div`
 // 박스의 색을 배열에 담는다.
 const boxList = ["red", "green", "blue"];
 
-// 색을 넣으면, 이름을 반환해주는 함수를 만든다.
 const getBoxName = (color) => {
+    let boxName;
     switch (color) {
         case "red":
-            return "빨간 박스";
+            boxName = "빨간 박스";
+            break;
         case "green":
-            return "초록 박스";
+            boxName = "초록 박스";
+            break;
         case "blue":
-            return "파란 박스";
+            boxName = "파란 박스";
+            break;
         default:
-            return "검정 박스";
+            boxName = "검정 박스";
+            break;
     }
+    return boxName;
 };
 
 const App = () => {
