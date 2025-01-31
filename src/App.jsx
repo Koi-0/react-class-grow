@@ -1,48 +1,42 @@
-import React from "react";
-import styled from "styled-components";
-
-const StContainer = styled.div`
-    display: flex;
-`;
-
-const StBox = styled.div`
-    width: 100px;
-    height: 100px;
-    border: 1px solid ${(props) => props.borderColor};
-    margin: 20px;
-`;
-
-// 박스의 색을 배열에 담는다.
-const boxList = ["red", "green", "blue"];
-
-const getBoxName = (color) => {
-    let boxName;
-    switch (color) {
-        case "red":
-            boxName = "빨간 박스";
-            break;
-        case "green":
-            boxName = "초록 박스";
-            break;
-        case "blue":
-            boxName = "파란 박스";
-            break;
-        default:
-            boxName = "검정 박스";
-            break;
-    }
-    return boxName;
-};
+import { useState } from "react";
+import Child from "./components/Child";
 
 const App = () => {
+    const [count, setCount] = useState(0);
+
     return (
-        <StContainer>
-            {/* map을 이용해서 StBox를 반복하여 화면에 그린다. */}
-            {boxList.map((box) => (
-                <StBox borderColor={box}>{getBoxName(box)}</StBox>
-            ))}
-        </StContainer>
+        <div>
+            <h1>여기는 부모 컴포넌트입니다.</h1>
+            <span>현재 카운트 : {count}</span>
+            <Child setCount={setCount} />
+        </div>
     );
 };
 
 export default App;
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
+
+// useState 기본적인 형태
+// useState 함수가 배열을 반환하고, 이것을 구조 분해 문법으로 꺼내놓은 모습이다.
+// const [state, setState] = useState(initialState);
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
+
+// 기존에 우리가 사용하던 방식
+// setState(number + 1);
+
+// 함수형 업데이트
+// setState(() => {});
+
+// 예시
+// 현재 number의 값을 가져와서 그 값에 +1을 더하여 반환한 것이다.
+// setState((currentNumber) => {
+//     return currentNumber + 1;
+// });
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
+
+// 차이점
+// 일반 업데이트 방식 : onClick을 했을 때 setNumber 라는 명령을 세 번 내리지만, React는 그 명령을 하나로 모아 최종적으로 한 번만 실행시킨다.
+// 함수형 업데이트 방식 : 세 번을 동시에 명령을 내리면, 그 명령을 모아 순차적으로 각각 한 번씩 실행시킨다.
