@@ -1,5 +1,3 @@
-import React from "react";
-
 const HeaderStyles = {
     width: "100%",
     background: "black",
@@ -33,7 +31,7 @@ const layoutStyles = {
 function Header() {
     return (
         <div style={{ ...HeaderStyles }}>
-            <span>Sparta Coding Club - Let's learn React</span>
+            <span>Sparta Coding Club - Lets learn React</span>
         </div>
     );
 }
