@@ -157,10 +157,10 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
 
-import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addNumber, removeNumber } from "./redux/modules/counter";
+import { useState } from "react";
 // import { minusOne, plusOne } from "./redux/modules/counter";
 
 const App = () => {
